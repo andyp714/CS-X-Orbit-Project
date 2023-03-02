@@ -23,10 +23,21 @@ def main():
             newLine.append(initialyVelocity)
             newLine.append((-1 * hostMass * newLine[1] * gValue)/(((newLine[1] ** 2) + (newLine[3] ** 2))**1.5))
             newLine.append((-1 * hostMass * newLine[3] * gValue)/(((newLine[1] ** 2) + (newLine[3] ** 2))**1.5))
-            print(newLine)
+        
+        else:
+            newLine.append(currentTime)
+            newLine.append(lineArray[-1][1] + lineArray[-1][2] * timeIncrement)
+            newLine.append(lineArray[-1][2] + lineArray[-1][5] * timeIncrement)
+            newLine.append(lineArray[-1][3] + lineArray[-1][4] * timeIncrement)
+            newLine.append(lineArray[-1][4] + lineArray[-1][6] * timeIncrement)
+            newLine.append((-1 * hostMass * newLine[1] * gValue)/(((newLine[1] ** 2) + (newLine[3] ** 2))**1.5))
+            newLine.append((-1 * hostMass * newLine[3] * gValue)/(((newLine[1] ** 2) + (newLine[3] ** 2))**1.5))
 
+
+        lineArray.append(newLine)
         currentTime += timeIncrement
 
+    print(lineArray)
 
 if __name__ == "__main__":
     main()
