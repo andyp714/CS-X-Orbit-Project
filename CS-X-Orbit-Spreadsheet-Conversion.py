@@ -10,18 +10,22 @@ def main():
     gValue = float(6.67e-11)
     
     lineArray = []
+    currentTime = 0
 
     #format of Line: Time, X pos, X vel, Y pos, Y vel, Acc X, Acc Y,
     for rowNumber in range(numberLines):
         newLine = []
         if rowNumber == 0:
-            newLine.append(timeIncrement)
+            newLine.append(currentTime)
             newLine.append(intialxPosition)
             newLine.append(initialxVelocty)
             newLine.append(initialyPosition)
             newLine.append(initialyVelocity)
-            newLine.append(-1 * (gValue * hostMass * int(newLine[1]))/(((int(newLine[3])**2) + (int(newLine[1])))**1.5))
+            newLine.append((-1 * hostMass * newLine[1] * gValue)/(((newLine[1] ** 2) + (newLine[3] ** 2))**1.5))
+            newLine.append((-1 * hostMass * newLine[3] * gValue)/(((newLine[1] ** 2) + (newLine[3] ** 2))**1.5))
             print(newLine)
+
+        currentTime += timeIncrement
 
 
 if __name__ == "__main__":
