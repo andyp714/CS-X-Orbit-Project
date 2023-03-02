@@ -20,7 +20,8 @@ def main():
             newLine.append(initialxVelocty)
             newLine.append(initialyPosition)
             newLine.append(initialyVelocity)
-            #Add acc x and acc y
+            newLine.append(-1 * (gValue * hostMass * int(newLine[1]))/(((int(newLine[3])**2) + (int(newLine[1])))**1.5))
+            print(newLine)
 
 
 if __name__ == "__main__":
