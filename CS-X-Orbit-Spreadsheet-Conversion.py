@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+
+
 def dataGeneration():
     hostMass = float(input("Enter mass of the host planet (kg) > "))
     planetMass = float(input("Enter mass of the orbiting planet (kg) > "))
