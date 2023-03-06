@@ -56,6 +56,7 @@ def graphGeneration(dataSet):
     plt.title("X Position VS Y Position")
     plt.xlabel("X Position [m]")
     plt.ylabel("Y Position [m]")
+    plt.plot(0,0, 'ro')
     plt.show()
 
 if __name__ == "__main__":
