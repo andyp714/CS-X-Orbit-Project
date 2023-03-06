@@ -42,6 +42,21 @@ def dataGeneration():
         currentTime += timeIncrement
 
     dataSet = lineArray
+    graphGeneration(dataSet)
+
+def graphGeneration(dataSet):
+    xValues = []
+    yValues = []
+    for line in dataSet:
+        xValues.append(line[1])
+        yValues.append(line[3])
+    
+    plt.plot(xValues,yValues, 'b-')
+    plt.grid(visible=True, which='major', axis='both')
+    plt.title("X Position VS Y Position")
+    plt.xlabel("X Position [m]")
+    plt.ylabel("Y Position [m]")
+    plt.show()
 
 if __name__ == "__main__":
     dataGeneration()
