@@ -1,4 +1,4 @@
-def main():
+def dataGeneration():
     hostMass = float(input("Enter mass of the host planet (kg) > "))
     planetMass = float(input("Enter mass of the orbiting planet (kg) > "))
     initialyVelocity = float(input("Enter initial velocity in the y direction of the orbiting planet (m/s) > "))
@@ -37,7 +37,7 @@ def main():
         lineArray.append(newLine)
         currentTime += timeIncrement
 
-    print(lineArray)
+    dataSet = lineArray
 
 if __name__ == "__main__":
-    main()
+    dataGeneration()
