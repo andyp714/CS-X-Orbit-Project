@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as anim
+import numpy as np
 
-
+#19380 is perfect circle
 def dataGeneration():
     hostMass = float(input("Enter mass of the host planet (kg) > "))
     planetMass = float(input("Enter mass of the orbiting planet (kg) > "))
@@ -47,10 +48,14 @@ def dataGeneration():
 def graphGeneration(dataSet):
     xValues = []
     yValues = []
+
     for line in dataSet:
         xValues.append(line[1])
         yValues.append(line[3])
+
     
+
+
     plt.plot(xValues,yValues, 'b-')
     plt.grid(visible=True, which='major', axis='both')
     plt.title("X Position VS Y Position")
@@ -58,6 +63,8 @@ def graphGeneration(dataSet):
     plt.ylabel("Y Position [m]")
     plt.plot(0,0, 'ro')
     plt.show()
+
+
 
 if __name__ == "__main__":
     dataGeneration()
