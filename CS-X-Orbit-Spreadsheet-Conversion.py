@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import matplotlib.animation as anim
+import matplotlib.animation as animation
 import numpy as np
 
 #19380 is perfect circle
@@ -52,10 +52,33 @@ def graphGeneration(dataSet):
     for line in dataSet:
         xValues.append(line[1])
         yValues.append(line[3])
+    
+    fig = plt.figure()
+    axis = plt.axes(xlim=((1.1 * min(xValues)), (1.1 * max(xValues))), ylim=((1.1*min(yValues)), (1.1*max(yValues))))
+    line, = axis.plot([],[], lw=2)
+
+    def init():
+        line.set_data([],[])
+        return line,
+
+    xdata, ydata = [], []
+
+    def animate(i):
+        x = xValues[i]
+        y = yValues[i]
+
+        xdata.append(x)
+        ydata.append(y)
+        line.set_data(xdata, ydata)
+        return line,
+
+    anim = animation.FuncAnimation(fig, animate, init_func= init, frames=50000, interval = 1, blit=True)
+    plt.show()
+
 
     
 
-
+    '''
     plt.plot(xValues,yValues, 'b-')
     plt.grid(visible=True, which='major', axis='both')
     plt.title("X Position VS Y Position")
@@ -63,6 +86,7 @@ def graphGeneration(dataSet):
     plt.ylabel("Y Position [m]")
     plt.plot(0,0, 'ro')
     plt.show()
+    '''
 
 
 
