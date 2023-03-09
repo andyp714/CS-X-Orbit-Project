@@ -55,24 +55,28 @@ def graphGeneration(dataSet):
     
     fig = plt.figure()
     axis = plt.axes(xlim=((1.1 * min(xValues)), (1.1 * max(xValues))), ylim=((1.1*min(yValues)), (1.1*max(yValues))))
-    line, = axis.plot([],[], lw=2)
+    plt.plot(0,0, 'ro')
+    line, = axis.plot([],[], 'bo')
+    line2, = axis.plot([], [], lw=1)
 
     def init():
         line.set_data([],[])
+        line2.set_data([],[])
         return line,
 
     xdata, ydata = [], []
 
     def animate(i):
-        x = xValues[i]
-        y = yValues[i]
+        x = xValues[4* i]
+        y = yValues[4* i]
 
         xdata.append(x)
         ydata.append(y)
-        line.set_data(xdata, ydata)
-        return line,
+        line2.set_data(xdata,ydata)
+        line.set_data(x, y)
+        return line, line2,
 
-    anim = animation.FuncAnimation(fig, animate, init_func= init, frames=50000, interval = 1, blit=True)
+    anim = animation.FuncAnimation(fig, animate, init_func= init, interval = 0.1, blit=True)
     plt.show()
 
 
