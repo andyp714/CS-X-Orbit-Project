@@ -6,7 +6,7 @@ import math
 #19380 is perfect circle!
 def dataGeneration():
     hostMass = float(input("Enter mass of the host planet (kg) > "))
-    planetMass = float(0)
+    planetMass = float(1)
     initialyVelocity = float(input("Enter initial velocity in the y direction of the orbiting planet (m/s) > "))
     intialxPosition = float(input("Enter initial x position of the orbiting planet (m) > "))
     timeIncrement = float(input("Enter the time increment for the calculations (s) > "))
