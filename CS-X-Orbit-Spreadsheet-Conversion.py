@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
 
-#19380 is perfect circle
+#19380 is perfect circle!
 def dataGeneration():
     hostMass = float(input("Enter mass of the host planet (kg) > "))
     planetMass = float(input("Enter mass of the orbiting planet (kg) > "))
