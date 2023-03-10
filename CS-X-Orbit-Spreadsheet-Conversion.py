@@ -55,30 +55,33 @@ def graphGeneration(dataSet, numberLines):
         yValues.append(line[3])
     
     fig = plt.figure()
-    axis = plt.axes(xlim=((1.1 * min(xValues)), (1.1 * max(xValues))), ylim=((1.1*min(yValues)), (1.1*max(yValues))))
+    axis = plt.axes(xlim=((-1.1 * max(xValues)), (1.1 * max(xValues))), ylim=((-1.1*max(yValues)), (1.1*max(yValues))))
     plt.plot(0,0, 'ro')
+    plt.grid(visible=True, which='major', axis='both')
     line, = axis.plot([],[], 'bo')
     line2, = axis.plot([], [], lw=1)
-    framesNumber = math.floor((numberLines-1)/4)
+    framesNumber = math.floor((numberLines-1)/8)
 
     def init():
         line.set_data([],[])
         line2.set_data([],[])
-        return line,
+        xdata=[]
+        ydata=[]
+        return line, line2
 
     xdata, ydata = [], []
 
     def animate(i):
-        x = xValues[4* i]
-        y = yValues[4* i]
-
+        x = xValues[8* i]
+        y = yValues[8* i]
         xdata.append(x)
         ydata.append(y)
+        
         line2.set_data(xdata,ydata)
-        line.set_data(x, y)
+        line.set_data([x], [y])
         return line, line2,
 
-    anim = animation.FuncAnimation(fig, animate, init_func= init, interval = 0.1, blit=True, frames=framesNumber)
+    anim = animation.FuncAnimation(fig, animate, init_func= init, interval = 1, blit=True, frames=framesNumber, repeat=True)
     plt.show()
 
 
