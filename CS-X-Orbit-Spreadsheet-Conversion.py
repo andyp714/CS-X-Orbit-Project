@@ -6,7 +6,7 @@ import math
 #19380 is perfect circle!
 def dataGeneration():
     hostMass = float(input("Enter mass of the host planet (kg) > "))
-    planetMass = float(input("Enter mass of the orbiting planet (kg) > "))
+    planetMass = float(0)
     initialyVelocity = float(input("Enter initial velocity in the y direction of the orbiting planet (m/s) > "))
     intialxPosition = float(input("Enter initial x position of the orbiting planet (m) > "))
     timeIncrement = float(input("Enter the time increment for the calculations (s) > "))
@@ -55,31 +55,26 @@ def graphGeneration(dataSet, numberLines):
         yValues.append(line[3])
     
     fig = plt.figure()
-    axis = plt.axes(xlim=((-1.1 * max(xValues)), (1.1 * max(xValues))), ylim=((-1.1*max(yValues)), (1.1*max(yValues))))
+    plt.axes(xlim=((-1.1 * max(xValues)), (1.1 * max(xValues))), ylim=((-1.1*max(yValues)), (1.1*max(yValues))))
     plt.plot(0,0, 'ro')
+    plt.plot(xValues,yValues, linestyle='--',  color='#444444')
     plt.grid(visible=True, which='major', axis='both')
-    line, = axis.plot([],[], 'bo')
-    line2, = axis.plot([], [], lw=1)
+    plt.title("X-Position vs Y-Position")
+    line, = plt.plot([],[], 'bo')
     framesNumber = math.floor((numberLines-1)/8)
 
     def init():
         line.set_data([],[])
-        line2.set_data([],[])
-        xdata=[]
-        ydata=[]
-        return line, line2
+        return line,
 
     xdata, ydata = [], []
 
     def animate(i):
         x = xValues[8* i]
         y = yValues[8* i]
-        xdata.append(x)
-        ydata.append(y)
         
-        line2.set_data(xdata,ydata)
         line.set_data([x], [y])
-        return line, line2,
+        return line, 
 
     anim = animation.FuncAnimation(fig, animate, init_func= init, interval = 1, blit=True, frames=framesNumber, repeat=True)
     plt.show()
