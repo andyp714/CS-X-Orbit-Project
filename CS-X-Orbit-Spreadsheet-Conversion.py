@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
+import math
 
 #19380 is perfect circle!
 def dataGeneration():
@@ -43,9 +44,9 @@ def dataGeneration():
         currentTime += timeIncrement
 
     dataSet = lineArray
-    graphGeneration(dataSet)
+    graphGeneration(dataSet,  numberLines)
 
-def graphGeneration(dataSet):
+def graphGeneration(dataSet, numberLines):
     xValues = []
     yValues = []
 
@@ -58,6 +59,7 @@ def graphGeneration(dataSet):
     plt.plot(0,0, 'ro')
     line, = axis.plot([],[], 'bo')
     line2, = axis.plot([], [], lw=1)
+    framesNumber = math.floor((numberLines-1)/4)
 
     def init():
         line.set_data([],[])
@@ -76,7 +78,7 @@ def graphGeneration(dataSet):
         line.set_data(x, y)
         return line, line2,
 
-    anim = animation.FuncAnimation(fig, animate, init_func= init, interval = 0.1, blit=True)
+    anim = animation.FuncAnimation(fig, animate, init_func= init, interval = 0.1, blit=True, frames=framesNumber)
     plt.show()
 
 
